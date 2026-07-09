@@ -1,0 +1,98 @@
+/* 온코케어 매거진 — 스코프드(.mag-page). 랜딩과 동일 팔레트·sans 폰트. */
+.mag-page{
+  --bg:#F5F1EA; --bg-alt:#EDE7DC; --surface:#FFFFFF; --surface-warm:#FBF7F0;
+  --ink:#2A2520; --ink-soft:#5C544A; --ink-muted:#8C8378; --hair:#E5DDD0;
+  --sage:#5C8073; --sage-dark:#3F5D52; --sage-wash:#E4ECE7; --warm:#C97D60;
+  --sans:"Pretendard","Pretendard Variable",-apple-system,BlinkMacSystemFont,system-ui,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --maxw:760px; --pill:9999px;
+  --shadow-soft:0 1px 2px rgba(60,50,40,.04), 0 4px 16px rgba(60,50,40,.06);
+  --shadow-md:0 2px 6px rgba(60,50,40,.06), 0 12px 32px rgba(60,50,40,.08);
+  background:var(--bg); color:var(--ink); font-family:var(--sans); font-size:17px; line-height:1.7;
+  letter-spacing:-.01em; -webkit-font-smoothing:antialiased; min-height:100vh;
+}
+.mag-page *{box-sizing:border-box;}
+.mag-page a{color:inherit; text-decoration:none;}
+
+/* 헤더 */
+.mag-header{position:sticky; top:0; z-index:20; background:rgba(245,241,234,.85); backdrop-filter:blur(12px); border-bottom:1px solid var(--hair);}
+.mag-header .in{max-width:1040px; margin:0 auto; padding:16px 24px; display:flex; align-items:center; justify-content:space-between;}
+.mag-brand{display:flex; align-items:center; gap:8px; font-weight:700; font-size:17px;}
+.mag-brand .lf{width:22px; height:22px; display:inline-flex;}
+.mag-header nav{display:flex; gap:22px; font-size:15px; font-weight:500; color:var(--ink-soft);}
+.mag-header nav a:hover{color:var(--ink);}
+
+/* 컨테이너 */
+.mag-wrap{max-width:1040px; margin:0 auto; padding:clamp(36px,6vw,72px) 24px;}
+.mag-article{max-width:var(--maxw); margin:0 auto; padding:clamp(28px,5vw,56px) 24px 90px;}
+
+/* 목록 */
+.mag-hero-head{text-align:center; max-width:640px; margin:0 auto clamp(36px,5vw,56px);}
+.mag-kicker{font-size:13px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--sage); margin-bottom:14px;}
+.mag-page h1{font-size:clamp(30px,4.4vw,46px); font-weight:800; line-height:1.2; letter-spacing:-.03em; margin:0;}
+.mag-hero-head p{color:var(--ink-soft); font-size:clamp(16px,1.6vw,18px); margin-top:16px;}
+.mag-list{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
+.mag-item{background:var(--surface); border:1px solid var(--hair); border-radius:20px; overflow:hidden; box-shadow:var(--shadow-soft); transition:transform .3s, box-shadow .3s; display:flex; flex-direction:column;}
+.mag-item:hover{transform:translateY(-5px); box-shadow:var(--shadow-md);}
+.mag-item .thumb{aspect-ratio:3/2; width:100%; object-fit:cover; background:var(--bg-alt); display:block;}
+.mag-item .body{padding:20px 20px 22px; display:flex; flex-direction:column; gap:9px; flex:1;}
+.mag-cat{align-self:flex-start; font-size:12px; font-weight:700; padding:4px 11px; border-radius:var(--pill);}
+.mag-item h2{font-size:18.5px; font-weight:700; line-height:1.35; letter-spacing:-.02em; margin:0;}
+.mag-item p{font-size:14px; color:var(--ink-soft); line-height:1.6; margin:0; flex:1;}
+.mag-meta{font-size:12.5px; color:var(--ink-muted); margin-top:4px;}
+
+/* 기사 */
+.mag-breadcrumb{font-size:13px; color:var(--ink-muted); margin-bottom:20px;}
+.mag-breadcrumb a:hover{color:var(--ink);}
+.mag-article .a-cat{display:inline-flex; font-size:12.5px; font-weight:700; padding:5px 13px; border-radius:var(--pill); margin-bottom:16px;}
+.mag-article h1{font-size:clamp(27px,4vw,40px); line-height:1.25; margin:0 0 16px;}
+.mag-article .a-desc{font-size:clamp(16px,1.7vw,19px); color:var(--ink-soft); line-height:1.6; margin:0 0 20px;}
+.mag-article .a-meta{display:flex; flex-wrap:wrap; gap:8px 16px; font-size:13.5px; color:var(--ink-muted); padding-bottom:22px; border-bottom:1px solid var(--hair);}
+.mag-article .a-meta b{color:var(--ink-soft); font-weight:600;}
+.mag-figure-hero{margin:26px 0 8px;}
+.mag-figure-hero img{width:100%; height:auto; border-radius:18px; border:1px solid var(--hair); display:block;}
+.mag-article h2{font-size:clamp(21px,2.6vw,27px); font-weight:800; letter-spacing:-.02em; line-height:1.35; margin:40px 0 14px; scroll-margin-top:80px;}
+.mag-article h3{font-size:18.5px; font-weight:700; margin:26px 0 10px;}
+.mag-article p{margin:0 0 16px;}
+.mag-ul{margin:0 0 18px; padding-left:4px; list-style:none; display:grid; gap:10px;}
+.mag-ul li{position:relative; padding-left:24px; color:var(--ink); line-height:1.6;}
+.mag-ul li::before{content:""; position:absolute; left:4px; top:11px; width:8px; height:8px; border-radius:50%; background:var(--sage);}
+
+/* TL;DR */
+.mag-tldr{background:var(--sage-wash); border:1px solid #CFE0D8; border-radius:16px; padding:20px 22px; margin:26px 0;}
+.mag-tldr .t{font-size:13px; font-weight:800; letter-spacing:.06em; color:var(--sage-dark); margin-bottom:10px;}
+.mag-tldr ul{margin:0; padding-left:20px; display:grid; gap:8px;}
+.mag-tldr li{font-size:15.5px; line-height:1.55;}
+
+/* 콜아웃 */
+.mag-callout{border-radius:14px; padding:16px 18px; margin:22px 0; border:1px solid var(--hair);}
+.mag-callout.info{background:var(--surface-warm); border-color:#DCC9B4;}
+.mag-callout.warn{background:#FBEDE9; border-color:#EAC4B7;}
+.mag-callout .mc-title{font-weight:700; font-size:14.5px; margin-bottom:5px;}
+.mag-callout.warn .mc-title{color:#B0503C;}
+.mag-callout .mc-text{font-size:14.5px; color:var(--ink-soft); line-height:1.6;}
+
+/* 그림/SVG */
+.mag-figure{margin:22px 0; display:flex; justify-content:center;}
+.mag-svg{width:100%; max-width:460px; height:auto;}
+.mag-svg-t{font-size:14px; fill:#2A2520;}
+.mag-svg-s{font-size:12px; fill:#8C8378;}
+
+/* FAQ */
+.mag-faq{margin-top:48px; border-top:2px solid var(--sage-wash); padding-top:8px;}
+.mag-faq h2{margin-top:26px;}
+.mag-faq details{border-bottom:1px solid var(--hair); padding:4px 0;}
+.mag-faq summary{cursor:pointer; list-style:none; padding:16px 4px; font-weight:700; font-size:16.5px; display:flex; justify-content:space-between; gap:12px; align-items:center;}
+.mag-faq summary::-webkit-details-marker{display:none;}
+.mag-faq summary::after{content:"+"; color:var(--sage); font-weight:700; font-size:22px; line-height:1;}
+.mag-faq details[open] summary::after{content:"–";}
+.mag-faq .ans{padding:0 4px 18px; color:var(--ink-soft); font-size:15.5px; line-height:1.7;}
+
+/* 하단 */
+.mag-more{max-width:1040px; margin:0 auto; padding:0 24px 80px;}
+.mag-more h2{font-size:22px; font-weight:800; margin-bottom:20px;}
+.mag-footer{background:#211D19; color:#9B9286; font-size:13px; line-height:1.7; padding:34px 24px;}
+.mag-footer .in{max-width:1040px; margin:0 auto;}
+.mag-back{display:inline-flex; align-items:center; gap:7px; margin-top:34px; font-weight:600; color:var(--sage-dark);}
+
+@media (max-width:860px){ .mag-list{grid-template-columns:repeat(2,1fr);} .mag-header nav{display:none;} }
+@media (max-width:520px){ .mag-list{grid-template-columns:1fr;} }
