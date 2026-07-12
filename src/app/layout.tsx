@@ -61,6 +61,18 @@ export const metadata: Metadata = {
     follow: true,
     googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },
   },
+  // 파비콘: 브라우저 자동 탐색(/favicon.ico)에만 의존하지 않고 명시 선언.
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.png", type: "image/png", sizes: "512x512" },
+    ],
+    apple: [{ url: "/apple-icon.png", sizes: "180x180" }],
+  },
+  // Google Search Console — 사용자 계정 소유확인 (HTML 파일 방식과 병행)
+  verification: {
+    google: "googlec189ed635fa1310c",
+  },
 };
 
 // ── 구조화 데이터(JSON-LD): 검색·생성엔진(GEO)이 정확히 읽도록 ──
