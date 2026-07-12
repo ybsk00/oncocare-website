@@ -484,6 +484,7 @@ const Header: React.FC<{ onMenu: () => void }> = ({ onMenu }) => (
         ))}
       </nav>
       <div className="header-cta">
+        {/* 로그인 링크 숨김 (2026-07-12) — 필요 시 복원
         <a
           href="https://oncocare-web-okpo4egzcq-du.a.run.app/login" target="_blank" rel="noopener"
           className="nav-login"
@@ -496,6 +497,7 @@ const Header: React.FC<{ onMenu: () => void }> = ({ onMenu }) => (
         >
           로그인
         </a>
+        */}
         <a className="btn btn-primary btn-sm menu-cta" href="#download">
           앱 다운로드
         </a>
@@ -526,9 +528,11 @@ const MobileMenu: React.FC<{ open: boolean; onClose: () => void }> = ({ open, on
           {n.label}
         </a>
       ))}
+      {/* 로그인 링크 숨김 (2026-07-12) — 필요 시 복원
       <a href="https://oncocare-web-okpo4egzcq-du.a.run.app/login" target="_blank" rel="noopener" onClick={onClose}>
         로그인
       </a>
+      */}
       <a className="btn btn-primary" href="#download" onClick={onClose} style={{ marginTop: 18 }}>
         앱 다운로드
       </a>
