@@ -69,9 +69,12 @@ export const metadata: Metadata = {
     ],
     apple: [{ url: "/apple-icon.png", sizes: "180x180" }],
   },
-  // Google Search Console — 사용자 계정 소유확인 (HTML 파일 방식과 병행)
+  // 검색엔진 소유확인 — Google(HTML 파일 방식과 병행) · 네이버 서치어드바이저
   verification: {
     google: "googlec189ed635fa1310c",
+    other: {
+      "naver-site-verification": "e58324b1464472ea9f7f6cc4eec22f5ed3c3de31",
+    },
   },
 };
 
