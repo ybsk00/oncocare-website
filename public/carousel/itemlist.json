@@ -1,0 +1,60 @@
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "@id": "https://oncocare.co.kr/#oncocare-carousel",
+  "name": "온코케어 매거진 — 항암 치료 중 생활 가이드",
+  "description": "항암 치료 중 영양·부작용 관리·응급 신호 등 환자와 보호자를 위한 정보를 정리한 목록입니다.",
+  "itemListOrder": "https://schema.org/ItemListOrderAscending",
+  "numberOfItems": 7,
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "항암 중 잘 먹는 법 — 입맛 없고 마를 때",
+      "image": "https://oncocare.co.kr/carousel/c-01.jpg",
+      "url": "https://oncocare.co.kr/magazine/eating-well-during-chemo"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "열이 날 때는 지체하지 마세요 — 호중구감소성 발열의 신호",
+      "image": "https://oncocare.co.kr/carousel/c-02.jpg",
+      "url": "https://oncocare.co.kr/magazine/neutropenic-fever-emergency"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "오심·구토, 어떻게 관리하나 — 일상에서 할 수 있는 것부터",
+      "image": "https://oncocare.co.kr/carousel/c-03.jpg",
+      "url": "https://oncocare.co.kr/magazine/chemo-nausea-vomiting-management"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "손발 저림이 시작됐다면 — 말초신경병증의 이해",
+      "image": "https://oncocare.co.kr/carousel/c-04.jpg",
+      "url": "https://oncocare.co.kr/magazine/chemo-neuropathy-hands-feet"
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "name": "피부와 손발톱 변화 관리 — 건조·색소침착·갈라짐",
+      "image": "https://oncocare.co.kr/carousel/c-05.jpg",
+      "url": "https://oncocare.co.kr/magazine/chemo-skin-nail-changes-care"
+    },
+    {
+      "@type": "ListItem",
+      "position": 6,
+      "name": "종양표지자가 올랐다면 — 수치 하나로 판단하지 않는 이유",
+      "image": "https://oncocare.co.kr/carousel/c-06.jpg",
+      "url": "https://oncocare.co.kr/magazine/tumor-marker-rise-what-to-do"
+    },
+    {
+      "@type": "ListItem",
+      "position": 7,
+      "name": "첫 항암, 보호자 준비 — 입원 전 확인할 것",
+      "image": "https://oncocare.co.kr/carousel/c-07.jpg",
+      "url": "https://oncocare.co.kr/magazine/caregiver-first-chemo-prep"
+    }
+  ]
+}

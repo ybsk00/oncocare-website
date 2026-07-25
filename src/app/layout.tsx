@@ -1,4 +1,6 @@
 import type { Metadata, Viewport } from "next";
+// 네이버 SERP 썸네일 캐러셀용 ItemList (schema.org). 자산 생성 = 26_03/GEO시스템/scripts/_gen-carousel-2026-07-23.mjs
+import carouselItemList from "../../public/carousel/itemlist.json";
 import "./globals.css";
 
 const SITE = "https://oncocare.co.kr";
@@ -165,6 +167,10 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(carouselItemList) }}
         />
       </head>
       <body>{children}</body>
