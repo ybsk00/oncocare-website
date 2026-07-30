@@ -1,3 +1,14 @@
+import type { Metadata } from "next";
+
+// 자체 metadata가 없으면 루트 layout의 `alternates: { canonical: SITE }`(홈)를 상속받아
+// 이 페이지가 홈을 canonical로 지목 → 구글이 색인을 포기한다. (2026-07-26 SEO 감사에서 발견)
+export const metadata: Metadata = {
+  // 루트 layout에 `template: "%s | 온코케어 AI"` 가 있으므로 접미사를 직접 넣지 말 것(중복됨)
+  title: "이용약관",
+  description: "온코케어 AI 서비스 이용과 관련한 회사와 이용자 간의 권리·의무 및 책임사항을 규정한 약관입니다.",
+  alternates: { canonical: "https://oncocare.co.kr/terms" },
+};
+
 export default function TermsPage() {
   return (
     <div className="max-w-3xl mx-auto p-8">
