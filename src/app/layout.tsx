@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 // 네이버 SERP 썸네일 캐러셀용 ItemList (schema.org). 자산 생성 = 26_03/GEO시스템/scripts/_gen-carousel-2026-07-23.mjs
 import carouselItemList from "../../public/carousel/itemlist.json";
 import "./globals.css";
@@ -173,7 +174,17 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(carouselItemList) }}
         />
       </head>
-      <body>{children}</body>
+      <body>
+        {/* GA4 — 루미브리즈 계정 > 온코케어 AI 속성. 매핑 정본 = 26_03/GEO시스템/ga4-config.json */}
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-R9H7SR1S8P" strategy="afterInteractive" />
+        <Script id="ga4-init" strategy="afterInteractive">{`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-R9H7SR1S8P');
+        `}</Script>
+        {children}
+      </body>
     </html>
   );
 }
