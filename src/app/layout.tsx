@@ -6,6 +6,7 @@ import { Gothic_A1 } from "next/font/google";
 import carouselItemList from "../../public/carousel/itemlist.json";
 import { SiteHeader } from "../components/site-header";
 import { SiteFooter } from "../components/site-footer";
+import { ChatbotCloseBridge } from "../components/chatbot-button";
 import { CHATBOT, CLINIC, SITE, STORE } from "../content/contact";
 import "./globals.css";
 
@@ -165,6 +166,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Script src="/oncocare-cro.js" strategy="afterInteractive" />
         {/* 입원상담 = 의원 그룹웨어 AI 챗봇(방식 2: 자체 버튼에서 window.OncareChatbot.open()). 전 페이지 GNB 버튼용으로 사이트 전역 로드 */}
         <Script src={CHATBOT.embedSrc} strategy="afterInteractive" />
+        <ChatbotCloseBridge />
         <SiteHeader />
         <div id="main" tabIndex={-1}>
           {children}

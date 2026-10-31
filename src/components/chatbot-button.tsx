@@ -41,3 +41,19 @@ export function ChatbotButton({ children, onOpen, ...rest }: Props) {
     </button>
   );
 }
+
+const CHATBOT_ORIGIN = new URL(CHATBOT.embedSrc).origin;
+
+/** 상담 창(iframe) 안의 ✕ 는 부모에게 {type:"closeChatbot"} 을 postMessage 할 뿐이고 embed 스크립트는 그걸 듣지 않는다
+ *  → 여기서 받아 모달을 닫는다(상담 창 출처만 허용). 레이아웃에 한 번만 렌더. */
+export function ChatbotCloseBridge() {
+  React.useEffect(() => {
+    const onMsg = (e: MessageEvent) => {
+      if (e.origin !== CHATBOT_ORIGIN || (e.data as { type?: string } | null)?.type !== "closeChatbot") return;
+      window.OncareChatbot?.close?.();
+    };
+    window.addEventListener("message", onMsg);
+    return () => window.removeEventListener("message", onMsg);
+  }, []);
+  return null;
+}
