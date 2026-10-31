@@ -15,6 +15,18 @@ export type NavGroup = {
 
 export const NAV: NavGroup[] = [
   {
+    label: "AI 케어앱",
+    href: "/#app",
+    title: "OnCoCare",
+    desc: "암환자를 위한 AI 케어 동반자. 나의 치료 이야기를 기억하고, 언제든 이어서 이야기합니다.",
+    photo: { src: "/landing/slides/slide-window.webp", alt: "창가에서 차를 마시는 모습", caption: "언제든, 새벽에도" },
+    items: [
+      { href: "/#app", label: "기능 소개", icon: "app" },
+      { href: "/#ai-care", label: "AI 케어 상담", icon: "chat" },
+      { href: "/download", label: "앱 다운로드", icon: "download" },
+    ],
+  },
+  {
     label: "병원소개",
     href: "/#about",
     title: "병원소개",
@@ -53,18 +65,6 @@ export const NAV: NavGroup[] = [
       { href: "/admission#consult", label: "병원 상담 연결", icon: "hospital-call" },
       { href: "/admission#nonpay", label: "비급여 안내", icon: "won" },
       { href: "/admission#rooms", label: "병실 둘러보기", icon: "bed" },
-    ],
-  },
-  {
-    label: "AI 케어앱",
-    href: "/#app",
-    title: "OnCoCare",
-    desc: "서울온케어의원의 AI 케어 앱. 퇴원한 뒤의 하루를 기록하고 함께 살핍니다.",
-    photo: { src: "/clinic/hands.webp", alt: "환자의 손을 잡은 의료진", caption: "집에서도 이어지는 케어" },
-    items: [
-      { href: "/#app", label: "기능 소개", icon: "app" },
-      { href: "/#ai-care", label: "AI 케어 상담", icon: "chat" },
-      { href: "/download", label: "앱 다운로드", icon: "download" },
     ],
   },
   { label: "매거진", href: "/magazine" },

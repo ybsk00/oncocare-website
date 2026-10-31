@@ -4,62 +4,117 @@ import Link from "next/link";
 import { MAGAZINE } from "../content/magazine";
 import { CHANNEL_NOTE, CLINIC, MAP_LINKS } from "../content/contact";
 import { Icon, SoccMark, type IconName } from "../components/icons";
-import { AdmissionSection, DownloadSection } from "../components/sections";
+import { AdmissionSection, DownloadSection, StoreBadges } from "../components/sections";
+import { HeroCareLine, HeroRings, HeroSlides } from "../components/hero-slides";
 import { ChatbotButton } from "../components/chatbot-button";
 import "./home.css";
 
 /* 2026-10-31 리브랜딩 — 서울온케어의원 사이트(시안 A 포팅). 앱 OnCoCare 는 "서울온케어의원의 AI 케어 앱"으로 종속 표기.
    금지: 알약 배지·마지막 단어 색강조·플로팅 칩·이모지·스탯 카드·1-2-3 카드·전면 가운데 정렬. 의료법: 개별 시술명·효과 표현·후기 금지. */
 
-/* ── Hero ── */
+/* ── Hero ── AI 동반자가 주인공. 병원(서울온케어의원)은 만든 곳·필요할 때 연결되는 곳으로 한 걸음 뒤에 둔다.
+   표현 규칙: "암을 극복하게 한다/치료한다" 같은 효능 주장 금지 → "치료의 여정을 함께한다"(동반) 프레임만. */
+const D = (n: number) => ({ "--d": n }) as React.CSSProperties;
+
 function Hero() {
   return (
     <section className="hero" aria-labelledby="hero-h">
       <div className="hero-media">
         <div className="hero-img">
-          <Image
-            src="/clinic/doctor-care.webp"
-            alt="서울온케어의원 의료진이 병상의 환자를 살피는 모습"
-            fill
-            priority
-            sizes="100vw"
-          />
+          <HeroSlides />
+          <HeroCareLine />
         </div>
         <div className="hero-copy">
           <div className="wrap">
             <div className="inner">
-              <div className="kicker">
+              <HeroRings />
+              <div className="kicker rv" style={D(0)}>
                 <SoccMark />
-                남양주 다산 · 통합 암케어 의원
+                암환자를 위한 AI 케어 동반자 · OnCoCare
               </div>
               <h1 id="hero-h">
-                치료의 시간과
-                <br />
-                일상의 시간 사이,
-                <br />
-                서울온케어의원이
-                <br />곁에 있습니다.
+                <span className="ln"><span style={D(1)}>나를 기억하는 AI,</span></span>
+                <span className="ln"><span style={D(2)}>암 치료의 모든 날</span></span>
+                <span className="ln"><span style={D(3)}>곁에 있습니다.</span></span>
               </h1>
-              <p className="sub">
-                수술·항암·방사선 치료를 받는 동안, 그리고 치료를 마친 뒤의 회복기까지. 의료진은 입원 케어로 곁을 지키고, AI 케어앱
-                OnCoCare가 집에서의 하루까지 이어 살핍니다.
+              <p className="sub rv" style={D(4)}>
+                항암 몇 차인지, 지난번 어떤 부작용이 힘들었는지, 요즘 입맛과 검사 결과까지 기억합니다. 새벽에 잠이 안 올 때도, 진료실을
+                나선 뒤에도 — 처음부터 다시 설명할 필요 없이 언제든 이어서 이야기하세요.
               </p>
-              <div className="actions">
-                <ChatbotButton className="btn btn-brand" aria-label="병원 상담 연결 — 서울온케어의원 입원·진료 문의">
-                  <Icon name="hospital-call" />
-                  병원 상담 연결
-                </ChatbotButton>
-                <a className="btn btn-line" href={CLINIC.tel}>
-                  <Icon name="phone" />
-                  {CLINIC.phone}
-                </a>
+              <div className="hero-dl rv" style={D(5)}>
+                <StoreBadges />
+                <Link href="/download" className="hero-dl-more">
+                  무료 다운로드 안내
+                  <Icon name="arrow" />
+                </Link>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* 기억하는 AI 시연(대화 예시) + 병원 연결은 보조 채널로 */}
+      <div className="hero-ai" aria-labelledby="hero-ai-h">
+        <div className="wrap">
+          <div className="hai-copy">
+            <p className="hai-kicker">
+              <Icon name="chat" />
+              어제의 나를 기억하는 대화
+            </p>
+            <h2 id="hero-ai-h">
+              한 번 말한 건 잊지 않고,
+              <br />
+              먼저 안부를 묻습니다.
+            </h2>
+            <p className="hai-sub">
+              지난 대화와 기록을 바탕으로 오늘의 컨디션·식사·복약을 살피고, 걱정되는 증상은 근거와 함께 설명합니다. 위험 신호가 보이면
+              119와 가까운 응급실 정보를 먼저 안내합니다.
+            </p>
+          </div>
+          <figure className="hai-chat" aria-label="앱 대화 예시">
+            <figcaption>앱 대화 예시</figcaption>
+            <p className="hai-mem">
+              <Icon name="book" />
+              기억하고 있어요 · 2차 항암 · 입맛 저하 · 두부를 좋아함
+            </p>
+            <p className="hai-bubble ai">
+              <span className="typing" aria-hidden="true">
+                <i />
+                <i />
+                <i />
+              </span>
+              <span className="msg">지난주 2차 항암 뒤로 입맛이 없다고 하셨죠. 좋아하시는 두부로 부드러운 한 끼, 오늘은 좀 드셨어요?</span>
+            </p>
+            <p className="hai-bubble me">조금 먹었어요. 속이 좀 메스꺼워요.</p>
+          </figure>
+          <div className="hai-clinic">
+            <p className="hai-clinic-h">
+              병원이 필요할 땐
+              <b>{CLINIC.name}</b>
+            </p>
+            <p className="hai-clinic-s">OnCoCare를 만든 의원이 입원·진료 문의를 직접 받습니다.</p>
+            <div className="hai-clinic-a">
+              <ChatbotButton className="btn btn-brand" aria-label="병원 상담 연결 — 서울온케어의원 입원·진료 문의">
+                <Icon name="hospital-call" />
+                병원 상담 연결
+              </ChatbotButton>
+              <a className="hai-tel" href={CLINIC.tel}>
+                <Icon name="phone" />
+                {CLINIC.phone}
+              </a>
             </div>
           </div>
         </div>
       </div>
       <div className="hero-rail">
         <div className="wrap">
+          <a href="#app">
+            <Icon name="app" />
+            <div>
+              <b>AI 케어앱 OnCoCare</b>
+              <span>기억하고, 먼저 묻고, 언제든 답하는 동반자</span>
+            </div>
+            <Icon name="arrow" className="arr" />
+          </a>
           <a href="#clinics">
             <Icon name="care" />
             <div>
@@ -76,14 +131,6 @@ function Hero() {
             </div>
             <Icon name="arrow" className="arr" />
           </a>
-          <a href="#app">
-            <Icon name="app" />
-            <div>
-              <b>AI 케어앱 OnCoCare</b>
-              <span>퇴원 후 집에서 이어지는 기록과 살핌</span>
-            </div>
-            <Icon name="arrow" className="arr" />
-          </a>
         </div>
       </div>
     </section>
@@ -97,7 +144,7 @@ function About() {
       <div className="wrap">
         <div className="grid">
           <div>
-            <div className="label">서울온케어 소개</div>
+            <div className="label">OnCoCare를 만든 곳 · 서울온케어의원</div>
             <h2 id="about-h">
               치료는 큰 병원에서.
               <br />그 사이의 하루는
@@ -319,22 +366,22 @@ function AppSection() {
           <div>
             <div className="label">AI 케어앱</div>
             <h2 id="app-h" style={{ marginTop: 20 }}>
-              퇴원한 날부터,
+              혼자 견디는 밤이
               <br />
-              병원의 시선이
+              없도록, 언제든
               <br />
-              집까지 따라갑니다.
+              이어서 이야기하세요.
             </h2>
             <p className="lede" style={{ marginTop: 24 }}>
-              증상·식사·복약·검사지를 남기면 쉬운 말로 정리하고, 필요한 순간엔 의료진과 이어 드립니다. 치료는 병원에서 받지만, 회복은
-              집에서 이어지니까요.
+              암 진단부터 항암·회복기까지, OnCoCare는 나의 치료 이야기를 기억하는 AI 동반자입니다. 증상·식사·복약·검사지를 남기면 쉬운
+              말로 정리하고, 다음 대화에서 그 기억을 이어 묻습니다. 어느 병원에서 치료받든 누구나 무료로 쓸 수 있어요.
             </p>
             <div className="brandline">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="/brand/mark.svg" alt="" width={44} height={44} />
               <div>
                 <b>OnCoCare</b>
-                <span>서울온케어의원의 AI 케어 앱</span>
+                <span>암환자를 위한 AI 케어 동반자 · 서울온케어의원이 만들었습니다</span>
               </div>
             </div>
             <div className="phone" aria-label="OnCoCare 앱 홈 화면 예시" role="img">
@@ -640,19 +687,19 @@ export default function HomePage() {
   return (
     <main className="site" id="top">
       <Hero />
-      <About />
+      <AppSection />
+      <MagazineTeaser />
+      <DownloadSection />
       <div className="wrap divider-row" aria-hidden="true">
         <span />
         <SoccMark />
         <span />
       </div>
+      <About />
       <Clinics />
       <Doctor />
       <Facility />
       <AdmissionSection />
-      <AppSection />
-      <MagazineTeaser />
-      <DownloadSection />
       <Location />
     </main>
   );

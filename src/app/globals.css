@@ -201,3 +201,8 @@ footer.site-foot .copy { margin: 20px 0 0; font-size: 12px }
 }
 @media (max-width: 420px) { .store svg { height: 50px } }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important } }
+
+/* 2026-10-31 AI 우선: 헤더 주 버튼=앱 다운로드, 병원 상담은 보조 텍스트 버튼 */
+.gnb-right .consult { background: none; border: 0; padding: 0; cursor: pointer; font-size: 15.5px; color: var(--ink-2) }
+.gnb-right .consult:hover { color: var(--brand-ink) }
+.drawer .pfoot .btn:first-child { grid-column: 1 / -1 }

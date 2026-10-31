@@ -26,9 +26,9 @@ const display = Gothic_A1({
   variable: "--font-display",
 });
 
-const TITLE = "서울온케어의원 — 남양주 다산 통합 암케어 의원";
+const TITLE = "OnCoCare — 나를 기억하는 암환자 AI 케어 동반자 | 서울온케어의원";
 const DESC =
-  "수술·항암·방사선 치료 중과 치료 후 회복기까지, 남양주 다산(8호선 다산역)의 서울온케어의원이 입원·외래 케어로 곁을 지킵니다. 입원상담 010-9982-9941. 퇴원 뒤에는 AI 케어앱 OnCoCare로 집에서의 하루를 이어 살핍니다.";
+  "암 진단부터 항암·회복기까지, 나의 치료 이야기를 기억하고 언제든 이어서 이야기하는 암환자 전용 AI 케어앱 OnCoCare. 증상·식사·복약·검사지를 쉬운 말로 정리합니다. 무료 다운로드. 서울온케어의원(남양주 다산)이 만들었습니다.";
 
 export const viewport: Viewport = {
   width: "device-width",

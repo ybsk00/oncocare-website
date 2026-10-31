@@ -76,9 +76,9 @@ export function SiteHeader() {
           <a className="brand" href="/" aria-label="서울온케어의원 홈">
             <SoccLogo className="logo" />
             <small>
-              통합 암케어
+              암환자를 위한
               <br />
-              입원 · 외래 · AI 케어앱
+              AI 케어앱 OnCoCare
             </small>
           </a>
           <nav className="primary" aria-label="주요 메뉴">
@@ -119,14 +119,14 @@ export function SiteHeader() {
             </ul>
           </nav>
           <div className="gnb-right">
-            <a className="tel" href={CLINIC.tel} aria-label={`대표전화 ${CLINIC.phone}`}>
-              <Icon name="phone" />
-              <span>{CLINIC.phone}</span>
-            </a>
-            <ChatbotButton className="btn btn-brand" title="서울온케어의원 입원·진료 문의" aria-label="병원 상담 연결 — 서울온케어의원 입원·진료 문의">
+            <ChatbotButton className="tel consult" title="서울온케어의원 입원·진료 문의" aria-label="병원 상담 연결 — 서울온케어의원 입원·진료 문의">
               <Icon name="hospital-call" />
-              병원 상담 연결
+              <span>병원 상담</span>
             </ChatbotButton>
+            <a className="btn btn-brand" href="/download">
+              <Icon name="download" />
+              앱 무료 다운로드
+            </a>
             <button
               ref={burgerRef}
               type="button"
@@ -181,6 +181,10 @@ export function SiteHeader() {
             )}
           </div>
           <div className="pfoot">
+            <a className="btn btn-brand" href="/download">
+              <Icon name="download" />
+              앱 무료 다운로드
+            </a>
             <a className="btn btn-line" href={CLINIC.tel}>
               <Icon name="phone" />
               {CLINIC.phone}
