@@ -206,3 +206,9 @@ footer.site-foot .copy { margin: 20px 0 0; font-size: 12px }
 .gnb-right .consult { background: none; border: 0; padding: 0; cursor: pointer; font-size: 15.5px; color: var(--ink-2) }
 .gnb-right .consult:hover { color: var(--brand-ink) }
 .drawer .pfoot .btn:first-child { grid-column: 1 / -1 }
+
+/* 병원 상담 창(그룹웨어 chatbot-embed.js) 열고 닫기 가볍게 — 원본은 transition:all + 스프링 곡선이라 iframe 전체를 매 프레임 다시 그림.
+   opacity·transform 만 전환하고, 닫힌 뒤엔 visibility:hidden 으로 숨겨 안 보이는 상담 창이 렌더링을 계속하지 않게 한다. */
+html body #oncare-embed-frame { transition: opacity .2s ease-out, transform .2s ease-out, visibility 0s linear .2s; will-change: opacity, transform; visibility: hidden }
+html body #oncare-embed-frame.oncare-visible { visibility: visible; transition-delay: 0s }
+html body #oncare-overlay { transition: opacity .2s ease-out; will-change: opacity }
