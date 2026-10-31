@@ -172,7 +172,7 @@
 .doctor dt { color: var(--muted) }
 .doctor dd { margin: 0; color: var(--ink-2) }
 .doc-strip { display: grid; grid-template-columns: 2fr 1fr; gap: 16px; margin-top: 80px }
-.doc-strip img { height: 240px; width: 100%; object-fit: cover; border-radius: 2px }
+.doc-strip img { width: 100%; height: auto; aspect-ratio: 1400 / 732; object-fit: cover; border-radius: 2px }
 .doc-strip p { margin: 0; align-self: end; font-size: 14.5px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 14px }
 
 /* ── Facility gallery ── */
