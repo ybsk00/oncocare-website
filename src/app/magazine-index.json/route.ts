@@ -24,7 +24,7 @@ export function GET() {
     publishedAt: a.publishedAt,
     updatedAt: a.updatedAt,
     url: `${SITE}/magazine/${a.slug}`,
-    text: flatten(a.blocks),
+    text: flatten(a.blocks) + (a.references?.length ? "\n참고 자료\n" + a.references.map((r) => `${r.label} ${r.url}`).join("\n") : ""),
   }));
   return Response.json(
     { count: articles.length, articles },

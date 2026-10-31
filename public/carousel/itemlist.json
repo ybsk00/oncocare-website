@@ -5,7 +5,7 @@
   "name": "온코케어 매거진 — 항암 치료 중 생활 가이드",
   "description": "항암 치료 중 영양·부작용 관리·응급 신호 등 환자와 보호자를 위한 정보를 정리한 목록입니다.",
   "itemListOrder": "https://schema.org/ItemListOrderAscending",
-  "numberOfItems": 7,
+  "numberOfItems": 15,
   "itemListElement": [
     {
       "@type": "ListItem",
@@ -55,6 +55,62 @@
       "name": "첫 항암, 보호자 준비 — 입원 전 확인할 것",
       "image": "https://oncocare.co.kr/carousel/c-07.jpg",
       "url": "https://oncocare.co.kr/magazine/caregiver-first-chemo-prep"
+    },
+    {
+      "@type": "ListItem",
+      "position": 8,
+      "name": "항암 입원 준비물 체크리스트 — 1차와 2차 이후, 무엇이 다를까",
+      "image": "https://oncocare.co.kr/carousel/c-08.jpg",
+      "url": "https://oncocare.co.kr/magazine/chemo-admission-checklist"
+    },
+    {
+      "@type": "ListItem",
+      "position": 9,
+      "name": "항암 중 입맛이 변했다면 — 미각 변화와 식사 관리",
+      "image": "https://oncocare.co.kr/carousel/c-09.jpg",
+      "url": "https://oncocare.co.kr/magazine/chemo-taste-change-appetite-care"
+    },
+    {
+      "@type": "ListItem",
+      "position": 10,
+      "name": "케모포트 일상 관리 — 삽입 후 생활과 감염 신호",
+      "image": "https://oncocare.co.kr/carousel/c-10.jpg",
+      "url": "https://oncocare.co.kr/magazine/chemoport-care-daily"
+    },
+    {
+      "@type": "ListItem",
+      "position": 11,
+      "name": "췌장암 증세, 언제 검사받을까 — 황달·등 통증·체중감소",
+      "image": "https://oncocare.co.kr/carousel/c-11.jpg",
+      "url": "https://oncocare.co.kr/magazine/pancreatic-cancer-symptoms-when-to-get-checked"
+    },
+    {
+      "@type": "ListItem",
+      "position": 12,
+      "name": "위암 증세, 초기엔 조용하다 — 검사를 받아야 할 신호",
+      "image": "https://oncocare.co.kr/carousel/c-12.jpg",
+      "url": "https://oncocare.co.kr/magazine/stomach-cancer-symptoms-early-signs-screening"
+    },
+    {
+      "@type": "ListItem",
+      "position": 13,
+      "name": "대장암 증세, 치질과 헷갈릴 때 — 혈변·배변 변화·빈혈",
+      "image": "https://oncocare.co.kr/carousel/c-13.jpg",
+      "url": "https://oncocare.co.kr/magazine/colorectal-cancer-symptoms-bowel-change-bleeding"
+    },
+    {
+      "@type": "ListItem",
+      "position": 14,
+      "name": "유방암 항암, 수술 전과 후 — 아형·부작용·일정 정리",
+      "image": "https://oncocare.co.kr/carousel/c-14.jpg",
+      "url": "https://oncocare.co.kr/magazine/breast-cancer-chemo-before-after-surgery-side-effects"
+    },
+    {
+      "@type": "ListItem",
+      "position": 15,
+      "name": "젤로다 부작용 관리 — 손발 피부·설사·입안 변화",
+      "image": "https://oncocare.co.kr/carousel/c-15.jpg",
+      "url": "https://oncocare.co.kr/magazine/xeloda-capecitabine-side-effects-guide"
     }
   ]
 }

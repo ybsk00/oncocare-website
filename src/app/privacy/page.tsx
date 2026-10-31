@@ -1,17 +1,19 @@
 import type { Metadata } from "next";
+import { CONTACT } from "../../content/contact";
 
 // 자체 metadata가 없으면 루트 layout의 `alternates: { canonical: SITE }`(홈)를 상속받아
 // 이 페이지가 홈을 canonical로 지목 → 구글이 색인을 포기한다. (2026-07-26 SEO 감사에서 발견)
 export const metadata: Metadata = {
-  // 루트 layout에 `template: "%s | 온코케어 AI"` 가 있으므로 접미사를 직접 넣지 말 것(중복됨)
+  // 루트 layout에 `template: "%s | 서울온케어의원"` 가 있으므로 접미사를 직접 넣지 말 것(중복됨)
   title: "개인정보 처리방침",
   description: "온코케어 AI 서비스의 개인정보 수집·이용·보관·파기 및 이용자 권리에 관한 처리방침입니다.",
   alternates: { canonical: "https://oncocare.co.kr/privacy" },
+  openGraph: { type: "website", url: "https://oncocare.co.kr/privacy", title: "개인정보 처리방침 | 서울온케어의원" },
 };
 
 export default function PrivacyPage() {
   return (
-    <div className="max-w-3xl mx-auto p-8">
+    <div className="doc-page">
       <h1 className="text-2xl font-bold mb-2">개인정보 처리방침</h1>
       <p className="text-sm text-[var(--muted-foreground)] mb-6">
         최종 개정일: 2026년 6월 18일
@@ -23,7 +25,7 @@ export default function PrivacyPage() {
           <li>필수: 이름, 이메일, 생년월일, 암 관련 정보 (암종, 병기, 치료 단계)</li>
           <li>선택: 성별, 연락처, 체중, 검사 수치</li>
           <li>
-            건강 콘텐츠: AI 상담(케어챗) 대화 내용, 업로드한 검사지·약봉투·음식 사진 및 거기서
+            건강 콘텐츠: AI 케어 상담(케어챗) 대화 내용, 업로드한 검사지·약봉투·음식 사진 및 거기서
             추출한 수치·정보, 체크인·식이·복약 기록
           </li>
           <li>자동 수집: 서비스 이용 기록, 기기 식별자, 푸시 토큰</li>
@@ -47,7 +49,7 @@ export default function PrivacyPage() {
           3. 제3자 AI 서비스로의 정보 전송 및 처리
         </h2>
         <p className="text-sm">
-          본 서비스는 AI 기반 건강 관리 기능(AI 상담, 검사지·약봉투·음식 사진 분석, 맞춤 영양·복약
+          본 서비스는 AI 기반 건강 관리 기능(AI 케어 상담, 검사지·약봉투·음식 사진 분석, 맞춤 영양·복약
           안내 등)을 제공하기 위해, 이용자가 입력·업로드한 정보를 아래 제3자 생성형 AI 서비스로
           전송하여 처리합니다. <strong>이용자는 서비스 최초 이용 전, 앱 내 동의 화면을 통해 아래
           내용을 고지받고 명시적으로 동의한 경우에 한해 정보가 전송됩니다.</strong>
@@ -58,7 +60,7 @@ export default function PrivacyPage() {
             Vertex AI
           </li>
           <li>
-            <strong>전송 항목:</strong> AI 상담 대화 내용, 온보딩·건강정보(암종·치료 단계·체중·증상
+            <strong>전송 항목:</strong> AI 케어 상담 대화 내용, 온보딩·건강정보(암종·치료 단계·체중·증상
             등), 업로드한 검사지·약봉투·음식 사진 및 추출 정보, 식이·복약 기록
           </li>
           <li>
@@ -113,7 +115,7 @@ export default function PrivacyPage() {
         <p>
           LumiBreeze Co., Ltd. (주식회사 루미브리즈)
           <br />
-          이메일: privacy@oncocare.ai
+          문의: <a href={CONTACT.href}>{CONTACT.label}</a>
         </p>
       </div>
     </div>

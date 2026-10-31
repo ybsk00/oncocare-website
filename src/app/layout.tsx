@@ -1,70 +1,84 @@
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
+import localFont from "next/font/local";
+import { Gothic_A1 } from "next/font/google";
 // 네이버 SERP 썸네일 캐러셀용 ItemList (schema.org). 자산 생성 = 26_03/GEO시스템/scripts/_gen-carousel-2026-07-23.mjs
 import carouselItemList from "../../public/carousel/itemlist.json";
+import { SiteHeader } from "../components/site-header";
+import { SiteFooter } from "../components/site-footer";
+import { CHATBOT, CLINIC, SITE, STORE } from "../content/contact";
 import "./globals.css";
 
-const SITE = "https://oncocare.co.kr";
+// 본문 — Pretendard 자체 호스팅(가변 woff2). Windows 에서도 또렷하게 렌더.
+const pretendard = localFont({
+  src: "../../node_modules/pretendard/dist/web/variable/woff2/PretendardVariable.woff2",
+  weight: "45 920",
+  display: "swap",
+  variable: "--font-pretendard",
+  fallback: ["Apple SD Gothic Neo", "Malgun Gothic", "system-ui", "sans-serif"],
+});
+
+// 디스플레이 — Gothic A1 800~900 (BRAND.md 타이포)
+const display = Gothic_A1({
+  weight: ["700", "800", "900"],
+  display: "swap",
+  preload: false,
+  variable: "--font-display",
+});
+
+const TITLE = "서울온케어의원 — 남양주 다산 통합 암케어 의원";
+const DESC =
+  "수술·항암·방사선 치료 중과 치료 후 회복기까지, 남양주 다산(8호선 다산역)의 서울온케어의원이 입원·외래 케어로 곁을 지킵니다. 입원상담 010-9982-9941. 퇴원 뒤에는 AI 케어앱 OnCoCare로 집에서의 하루를 이어 살핍니다.";
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#5C8073",
+  viewportFit: "cover",
+  themeColor: "#FFFCF8",
 };
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE),
   title: {
-    default: "온코케어 AI — 암 치료의 모든 순간 곁에서",
-    template: "%s | 온코케어 AI",
+    default: TITLE,
+    template: "%s | 서울온케어의원",
   },
-  description:
-    "9명의 AI 전문팀이 증상·영양·심리·정보를 24시간 함께 살피고, 필요할 때 의료진과 연결합니다. 검사·판독지 해석, 임상시험 매칭, 복약·영양 관리까지 — 모든 안내는 정보·교육·영양관리 보조이며 진단·치료는 담당 의료진과 상의하세요.",
+  description: DESC,
   keywords: [
-    "온코케어",
-    "온코케어 AI",
-    "암 케어 앱",
-    "암환자 앱",
-    "항암 관리",
-    "임상시험 찾기",
-    "검사결과지 해석",
-    "암 영양관리",
-    "보조치료",
     "서울온케어의원",
+    "남양주 암요양병원",
+    "다산 암케어",
+    "암 입원",
+    "통합 암케어",
+    "림프부종",
+    "항암식단",
+    "OnCoCare",
+    "온코케어",
   ],
-  applicationName: "온코케어 AI",
-  authors: [{ name: "루미브리즈 (LumiBreeze)" }],
+  applicationName: CLINIC.name,
+  authors: [{ name: CLINIC.name }],
   alternates: { canonical: SITE },
   openGraph: {
     type: "website",
     locale: "ko_KR",
     url: SITE,
-    siteName: "온코케어 AI",
-    title: "온코케어 AI — 암 치료의 모든 순간 곁에서",
-    description:
-      "9명의 AI 전문팀이 증상·영양·심리·정보를 24시간 함께 살피고, 필요할 때 의료진과 연결합니다. 진단·치료는 늘 담당 주치의와 함께.",
-    images: [
-      {
-        url: "/landing/hero-family.png",
-        width: 928,
-        height: 1152,
-        alt: "온코케어 AI — 곁에서 손을 잡아주는 케어",
-      },
-    ],
+    siteName: CLINIC.name,
+    title: TITLE,
+    description: DESC,
+    images: [{ url: "/clinic/og-home.jpg", width: 1200, height: 630, alt: "서울온케어의원 — 치료의 시간과 일상의 시간 사이" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "온코케어 AI — 암 치료의 모든 순간 곁에서",
-    description:
-      "암환자와 보호자를 위한 AI 케어 동반자. 증상·영양·심리·정보를 24시간 함께 살펴요.",
-    images: ["/landing/hero-family.png"],
+    title: TITLE,
+    description: DESC,
+    images: ["/clinic/og-home.jpg"],
   },
   robots: {
     index: true,
     follow: true,
     googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },
   },
-  // 파비콘: 브라우저 자동 탐색(/favicon.ico)에만 의존하지 않고 명시 선언.
+  // 파비콘: SOCC 마크(오렌지). 브라우저 자동 탐색(/favicon.ico)에만 의존하지 않고 명시 선언.
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
@@ -81,98 +95,62 @@ export const metadata: Metadata = {
   },
 };
 
-// ── 구조화 데이터(JSON-LD): 검색·생성엔진(GEO)이 정확히 읽도록 ──
+// ── 구조화 데이터(JSON-LD) ──
+// 2026-10-31: 사이트 전면 주체가 서울온케어의원으로 바뀌어 MedicalClinic 노드를 복원(실주소·상담전화).
 const jsonLd = [
   {
     "@context": "https://schema.org",
-    "@type": "Organization",
-    "@id": `${SITE}/#organization`,
-    name: "주식회사 루미브리즈",
-    alternateName: "LumiBreeze",
+    "@type": "MedicalClinic",
+    "@id": `${SITE}/#clinic`,
+    name: CLINIC.name,
+    alternateName: CLINIC.nameEn,
+    description: "남양주 다산의 통합 암케어 의원. 표준 암 치료와 함께 가는 입원·외래 보조치료 프로그램과 AI 케어앱 OnCoCare를 운영합니다.",
     url: SITE,
-    logo: `${SITE}/landing/hero-family.png`,
-    brand: { "@type": "Brand", name: "온코케어 AI" },
-    sameAs: [
-      "https://play.google.com/store/apps/details?id=ai.oncocare.app",
-      "https://apps.apple.com/kr/app/id6780368713",
-    ],
+    logo: `${SITE}/clinic/socc-mark-512.png`,
+    image: `${SITE}/clinic/og-home.jpg`,
+    telephone: "+82-10-9982-9941",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: CLINIC.street,
+      addressLocality: CLINIC.locality,
+      addressRegion: CLINIC.region,
+      ...(CLINIC.postalCode ? { postalCode: CLINIC.postalCode } : {}),
+      addressCountry: "KR",
+    },
+    geo: { "@type": "GeoCoordinates", latitude: 37.6116, longitude: 127.1558 },
+    founder: { "@type": "Person", name: CLINIC.ceo, jobTitle: CLINIC.ceoTitle },
+    sameAs: [STORE.appStore, STORE.googlePlay],
   },
   {
     "@context": "https://schema.org",
     "@type": "WebSite",
     "@id": `${SITE}/#website`,
     url: SITE,
-    name: "온코케어 AI",
+    name: CLINIC.name,
     inLanguage: "ko-KR",
-    publisher: { "@id": `${SITE}/#organization` },
+    publisher: { "@id": `${SITE}/#clinic` },
   },
-  {
-    "@context": "https://schema.org",
-    "@type": "MedicalClinic",
-    "@id": `${SITE}/#clinic`,
-    name: "서울온케어의원",
-    description:
-      "암환자 보조치료·항암 보조치료 중심의 의원. 영양관리·증상관리·도수재활·심리지원 등 통합지지케어 제공.",
-    url: SITE,
-    telephone: "+82-1577-7998",
-    medicalSpecialty: ["Oncologic", "Nutrition"],
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "다산중앙로123번길 21-5, 8·9층",
-      addressLocality: "남양주시",
-      addressRegion: "경기도",
-      addressCountry: "KR",
-    },
-    geo: { "@type": "GeoCoordinates", latitude: 37.6116, longitude: 127.1558 },
-    employee: {
-      "@type": "Person",
-      name: "이찬용",
-      jobTitle: "대표원장",
-    },
-    parentOrganization: { "@id": `${SITE}/#organization` },
-  },
+  // 앱은 의원의 AI 케어 앱(종속 표기). HealthApplication — 의료기기로 읽히지 않게(정보·교육 보조).
   {
     "@context": "https://schema.org",
     "@type": "MobileApplication",
-    name: "온코케어 AI",
+    name: "OnCoCare (온코케어 AI)",
     operatingSystem: "ANDROID, IOS",
-    applicationCategory: "MedicalApplication",
+    applicationCategory: "HealthApplication",
     offers: { "@type": "Offer", price: "0", priceCurrency: "KRW" },
-    downloadUrl: [
-      "https://play.google.com/store/apps/details?id=ai.oncocare.app",
-      "https://apps.apple.com/kr/app/id6780368713",
-    ],
-    publisher: { "@id": `${SITE}/#organization` },
+    downloadUrl: [STORE.googlePlay, STORE.appStore],
+    provider: { "@id": `${SITE}/#clinic` },
+    author: { "@type": "Organization", name: "주식회사 루미브리즈", alternateName: "LumiBreeze" },
   },
 ];
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="ko">
+    <html lang="ko" className={`${pretendard.variable} ${display.variable}`}>
       <head>
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          rel="stylesheet"
-          href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css"
-        />
-        <link
-          rel="alternate"
-          type="application/rss+xml"
-          title="온코케어 매거진"
-          href="/feed.xml"
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(carouselItemList) }}
-        />
+        <link rel="alternate" type="application/rss+xml" title="서울온케어의원 매거진" href="/feed.xml" />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(carouselItemList) }} />
       </head>
       <body>
         {/* GA4 — 루미브리즈 계정 > 온코케어 AI 속성. 매핑 정본 = 26_03/GEO시스템/ga4-config.json */}
@@ -183,7 +161,15 @@ export default function RootLayout({
           gtag('js', new Date());
           gtag('config', 'G-R9H7SR1S8P');
         `}</Script>
-        {children}
+        {/* 앱 다운로드 전환(App Store·Google Play·APK) — 정본 public/oncocare-cro.js, 테넌트도 같은 파일 사용 */}
+        <Script src="/oncocare-cro.js" strategy="afterInteractive" />
+        {/* 입원상담 = 의원 그룹웨어 AI 챗봇(방식 2: 자체 버튼에서 window.OncareChatbot.open()). 전 페이지 GNB 버튼용으로 사이트 전역 로드 */}
+        <Script src={CHATBOT.embedSrc} strategy="afterInteractive" />
+        <SiteHeader />
+        <div id="main" tabIndex={-1}>
+          {children}
+        </div>
+        <SiteFooter />
       </body>
     </html>
   );

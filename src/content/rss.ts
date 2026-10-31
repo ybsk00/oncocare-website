@@ -26,7 +26,7 @@ export function magazineRssXml(): string {
   return `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title><![CDATA[온코케어 매거진]]></title>
+    <title><![CDATA[서울온케어의원 매거진]]></title>
     <link>${SITE}/magazine</link>
     <atom:link href="${SITE}/feed.xml" rel="self" type="application/rss+xml" />
     <description><![CDATA[근거로 읽는 암 케어 이야기 — 영양·증상관리·임상시험·검사 해석·마음 돌봄]]></description>

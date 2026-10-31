@@ -3,15 +3,16 @@ import type { Metadata } from "next";
 // 자체 metadata가 없으면 루트 layout의 `alternates: { canonical: SITE }`(홈)를 상속받아
 // 이 페이지가 홈을 canonical로 지목 → 구글이 색인을 포기한다. (2026-07-26 SEO 감사에서 발견)
 export const metadata: Metadata = {
-  // 루트 layout에 `template: "%s | 온코케어 AI"` 가 있으므로 접미사를 직접 넣지 말 것(중복됨)
+  // 루트 layout에 `template: "%s | 서울온케어의원"` 가 있으므로 접미사를 직접 넣지 말 것(중복됨)
   title: "이용약관",
   description: "온코케어 AI 서비스 이용과 관련한 회사와 이용자 간의 권리·의무 및 책임사항을 규정한 약관입니다.",
   alternates: { canonical: "https://oncocare.co.kr/terms" },
+  openGraph: { type: "website", url: "https://oncocare.co.kr/terms", title: "이용약관 | 서울온케어의원" },
 };
 
 export default function TermsPage() {
   return (
-    <div className="max-w-3xl mx-auto p-8">
+    <div className="doc-page">
       <h1 className="text-2xl font-bold mb-6">이용약관</h1>
 
       <div className="prose prose-sm text-[var(--foreground)] space-y-4">
@@ -28,7 +29,7 @@ export default function TermsPage() {
         </p>
         <ul className="list-disc pl-5 space-y-1">
           <li>본 서비스는 진단, 치료, 처방을 제공하지 않습니다.</li>
-          <li>AI 상담은 의학적 조언을 대체하지 않습니다.</li>
+          <li>AI 케어 상담은 의학적 조언을 대체하지 않습니다.</li>
           <li>영양제 추천은 건강기능식품에 한하며, 의약품이 아닙니다.</li>
           <li>긴급 상황 시 즉시 119 또는 병원에 연락하시기 바랍니다.</li>
         </ul>
