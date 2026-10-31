@@ -78,7 +78,7 @@ export const metadata: Metadata = {
     follow: true,
     googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },
   },
-  // 파비콘: SOCC 마크(오렌지). 브라우저 자동 탐색(/favicon.ico)에만 의존하지 않고 명시 선언.
+  // 파비콘: 앱 아이콘 A "기억의 고리"(오렌지, 2026-10-31 확정). 브라우저 자동 탐색(/favicon.ico)에만 의존하지 않고 명시 선언.
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
